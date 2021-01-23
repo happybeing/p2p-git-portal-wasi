@@ -14,19 +14,21 @@ In just a few weeks this project as received a lot of encouragement which has be
 
 **Forum (discourse):** [Git Portal Discussion](https://safenetforum.org/t/safenetwork-git-portal-discussion/32793?u=happybeing)
 
-## Screenshot
+## Proof-of-Concept
+A proof-of-concept has been developed in the repository [p2p-git-portal-poc](https://github.com/happyborg/p2p-git-portal-poc) as shown below, and a live demo is available at http://gitch.happybeing.com.
+
 <img src="./gitportal-poc-screenshot.png"/>
 
-## Using The Demo
-A recent live demo is available at http://gitch.happybeing.com. That is a static HTML no-backend app (so no-server side code). 
+### Proof-of-Concept Features
+The proof-of-concept is a static HTML no-backend app (so no-server side code). 
 
 You can create or upload repositories immediately using the buttons provided, but in order to clone a repository need to use a proxy or a browser plugin to avoid problems with CORS checks in the browser. A proxy is necessary for github, but a browser plugin is enough for some git services such as gitlab. See the [section on CORS](#setup-a-cors-proxy) if you wish to try out the clone feature.
 
 Once you have a repository stored in Git Portal you will be able to browse the file worktree and .git directories, view commits (if any), and view issues (a few example issues are added when you create a new repository).
 
 The UI does not yet allow you to create or edit issues.
-## Objective
-A Git Portal app which can run from static web hosting or from the peer-to-peer storage such as [Safe Network](https://safenetwork.tech) (a secure, anonymous, private peer-to-peer storage and communications platform). 
+## Git Portal Prototype
+Following on from the proof-of-concept, we are developing a Git Portal prototype using an improved architecture. Like the proof-of-concept, this will run from static web hosting or from the peer-to-peer storage such as [Safe Network](https://safenetwork.tech) (a secure, anonymous, private peer-to-peer storage and communications platform). 
 ## Development Approach
 Svelte has been selected for the front-end because it is very productive, performant and easy to learn. Even if you haven't used Svelte before I think you'll enjoy the experience and find it easy to contribute to front-end work.
 
