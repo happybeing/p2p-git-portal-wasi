@@ -1,0 +1,16 @@
+[package]
+name = "wasi-gitportal"
+version = "0.1.0"
+description = "Rust/WASI git portal functionality"
+authors = ["happybeing"]
+edition = "2018"
+
+[dependencies]
+js-sys = "0.3.46"
+log = "0.4.11"
+num-integer = "0.1.44"
+serde = { version = "1.0.120", features = ["derive"] }
+serde_json = "1.0.61"
+sha3 = "0.9.1"
+structopt = "0.2"
+wasm-bindgen = "^0.2"

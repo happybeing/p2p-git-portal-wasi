@@ -4,11 +4,11 @@ import {onMount} from "svelte"
 import { WASI } from '@wasmer/wasi'
 import browserBindings from '@wasmer/wasi/lib/bindings/browser'
 import { WasmFs } from '@wasmer/wasmfs'
-import * as test from './rust-wasi-example/src/test.js'
-import { SomeJsType } from './rust-wasi-example/src/test.js'
-import * as wasm from './wasi-example_bg_wasi.js'
+import * as test from './wasi-js/test.js'
+import { SomeJsType } from './wasi-js/test.js'
+import * as wasm from './wasi-gitportal_bg_wasi.js'
 
-const wasmFilePath = '/wasm/wasi-example_bg.wasm' // Several Rust/WASI examples using wasm-bindgen
+const wasmFilePath = '/wasm/wasi-gitportal_bg.wasm' // Several Rust/WASI examples using wasm-bindgen
 
 let output = "";
 
@@ -64,7 +64,7 @@ const startWasiTask = async (pathToWasmFile) => {
 	// Imports for WASI:
 	// - test.js JavaScript exports for Rust
 	// - wasm-bindgen Rust exports for JavaScript 
-	imports = {test,...{'./wasi-example_bg.js': await import('./wasi-example_bg_wasi')},...imports};
+	imports = {test,...{'./wasi-gitportal_bg.js': await import('./wasi-gitportal_bg_wasi')},...imports};
 
 	let instance = await WebAssembly.instantiate(wasmModule, {
 		...imports
@@ -119,8 +119,9 @@ const startWasiTask = async (pathToWasmFile) => {
 	// instance.exports.rust_print_nm();		// Rust '#[no_mangle]'
 	instance.exports.rust_print_bg();			// Rust '#[wasm_bindgen]'
 	output = await wasmFs.getStdOut();
-	console.log(output);
-
+	console.log(output.split('\n'));
+	output = output.split('\n');
+	
 	// -------------------------------------------------------------
 	console.log("** Example from https://github.com/ibaryshnikov/rust-workshop-21-dec-2018 **");
 
@@ -220,7 +221,7 @@ WASI. Source code is at
 	<p>Check the browser console and the content below for test output.</p>
 	<h2>Content from WASI</h2>
 		<h3>stdout:</h3>
-		<p>{output}</p>
+		<p> {#each output as line} {line}<br/> {/each} </p>
 </main>
 
 <style>
