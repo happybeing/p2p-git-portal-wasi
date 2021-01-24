@@ -1,4 +1,4 @@
-import { js_test_n } from 'test';
+import { js_test_n } from 'wasiJs';
 import * as wasm from './wasi-gitportal_bg.wasm';
 
 const lTextDecoder = typeof TextDecoder === 'undefined' ? (0, module.require)('util').TextDecoder : TextDecoder;
@@ -488,7 +488,7 @@ export const __wbindgen_string_new = function(arg0, arg1) {
     return addHeapObject(ret);
 };
 
-export const __wbg_jstestn_3972d64759ecb6d5 = logError(function(arg0) {
+export const __wbg_jstestn_7d277222df36a47d = logError(function(arg0) {
     js_test_n(arg0 >>> 0);
 });
 

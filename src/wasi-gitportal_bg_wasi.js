@@ -1,4 +1,4 @@
-import { js_test_n } from './wasi-js/test.js';
+import { js_test_n } from './wasi-js/wasiJs.js';
 let wasm;
 export function setBindingsWasm(w){ wasm = w; }
 
@@ -489,7 +489,7 @@ export const __wbindgen_string_new = function(arg0, arg1) {
     return addHeapObject(ret);
 };
 
-export const __wbg_jstestn_3972d64759ecb6d5 = logError(function(arg0) {
+export const __wbg_jstestn_7d277222df36a47d = logError(function(arg0) {
     js_test_n(arg0 >>> 0);
 });
 
