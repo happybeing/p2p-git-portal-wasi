@@ -1,9 +1,5 @@
 <script>
-
-// import wasm from './main.go';
-// const { cloneRepository } = wasm;
-// TODO implement the following stubs
-function cloneRepository(){}
+import {cloneRepository} from '../api'
 
 export let errorMessage;
 export let updateRepositoryUI;

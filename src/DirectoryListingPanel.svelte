@@ -1,10 +1,7 @@
 <script>
 // Show a directory in a repository
 
-// import wasm from './main.go';
-// const { getDirectory } = wasm;
-// TODO implement the following stubs
-function getDirectory(){ return []}
+import {getDirectory} from './api'
 
 export let storeName = "Content"
 export let repositoryRoot = ''
