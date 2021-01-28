@@ -3,6 +3,7 @@
 /node_modules/
 /public/bundle.*
 /public/wasm/
+/docs/public/
 
 /src/rust-wasi*js
 

@@ -1,0 +1,12 @@
+/* Extra styles applied to docdash template styles/jsdoc.css
+*/
+
+h1.page-title { font-size: 160%; }
+h1, h2, h3, h4, h5, h6 { font-size: 120%; }
+
+body { font-size: 120%; }
+nav h1, nav h2, nav h3, nav h4, nav h5, nav h6 { font-size: 120%; }
+nav ul a, nav ul a:active { font-size: 110%; }
+
+.details, table { font-size: 120%; }
+
