@@ -6,7 +6,7 @@ test.before(ENV.setup);
 test.after(ENV.reset);
 
 test('can list directory', async context => {
-  let directory = await context.page.evaluate(async (context) => {
+  let directory = await context.page.evaluate(async () => {
     return window.__API__.getDirectory('/');
   });
   assert.type(directory, 'object');
