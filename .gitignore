@@ -1,3 +1,5 @@
+/coverage
+/coverage.*
 /node_modules/
 /public/bundle.*
 /public/wasm/
@@ -5,6 +7,7 @@
 /src/rust-wasi*js
 
 .DS_Store
+yarn-error.log
 
 target/
 Cargo.lock
