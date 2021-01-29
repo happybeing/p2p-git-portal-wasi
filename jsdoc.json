@@ -1,9 +1,11 @@
 {
-    "plugins": [],
+    "plugins": [
+        "docs/customise-jsdoc"
+    ],
     "recurseDepth": 10,
     "source": {
         "includePattern": ".+\\.js(doc|x)?$",
-        "excludePattern": "(^|\\/|\\\\)_"
+        "excludePattern": "(^|\\/|\\\\)_|wasi-gitportal_bg.js"
     },
     "sourceType": "module",
     "tags": {

@@ -4,9 +4,23 @@
 h1.page-title { font-size: 160%; }
 h1, h2, h3, h4, h5, h6 { font-size: 120%; }
 
-body { font-size: 120%; }
-nav h1, nav h2, nav h3, nav h4, nav h5, nav h6 { font-size: 120%; }
-nav ul a, nav ul a:active { font-size: 110%; }
+body { 
+    font-size: 120%; 
+}
+
+nav h1, nav h2 {
+    font-size: 140%; 
+    line-height: 40px;
+}
+
+nav h3, nav h4, nav h5, nav h6 { 
+    font-size: 120%; 
+    line-height: 10px;
+}
+nav ul a, nav ul a:active { 
+    font-size: 110%; 
+    line-height: 30px;
+}
 
 .details, table { font-size: 120%; }
 

@@ -21,6 +21,9 @@ const options = yargs
             // Change value of module_name to path
             data = data.replace(/(import .* from ')(.*)(')/g, '$1' + argv.path + '$2.js$3');
 
+            // Add in JSDoc namespace
+            data = data.replace(/(^\/\*\*$)/mg, "$1 @memberof Rust");
+            data = "/** @namespace Rust */\n" + data;
             fs.writeFile(argv.outfile, data, 'utf8', function (err) {
                 if (err) return console.log(err);
             });
