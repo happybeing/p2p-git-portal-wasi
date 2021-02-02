@@ -1,3 +1,10 @@
+/**
+ * This internal API separates the front-end from the application logic which is implemented 
+ * using a mixture of JavaScript and Rust on top of a WasmerJS/WASI subsystem.
+ * 
+ * @namespace GitPortalAPI
+ */
+
 import { WASI } from '@wasmer/wasi'
 import { WasmFs } from '@wasmer/wasmfs'
 import browserBindings from '@wasmer/wasi/lib/bindings/browser'

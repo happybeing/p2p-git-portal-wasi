@@ -1,37 +1,51 @@
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
-import * as ENV from './setup/puppeteer.js'
+import * as ENV from './setup/puppeteer.js';
 
-test.before(ENV.setup);
-test.after(ENV.reset);
+test.before(async (context) => { 
+  await ENV.serversUp();
+  await ENV.setup(context); 
+});
 
-test('can list directory', async context => {
-  let directory = await context.page.evaluate(async () => {
-    return window.__API__.getDirectory('/');
+test.after(async (context) => { 
+  await ENV.reset(context); 
+  await ENV.serversDown();  
+});
+
+// test('can access application', async context => {
+//   let w = await context.page.evaluate(async () => {
+//     return window;
+//   });
+//   console.log('typeof(w):' + typeof(w));
+//   assert.type(w, 'object');
+//   // TODO more asserts
+// });
+
+test('can access API', async context => {
+  // console.log('t1');
+  let api = await context.page.evaluate(async () => {
+    return window.__API__;
   });
-  assert.type(directory, 'object');
+  assert.type(api, 'object');
   // TODO more asserts
 });
 
-// TODO test all APIs
-
-// test('can fetch data!', async context => {
-//   const data = await context.page.evaluate(() => {
-//     return fetch('https://httpbin.org/get').then(r => r.json());
-// 	});
-// 	assert.type(data, 'object');
-// 	assert.is(data.url, 'https://httpbin.org/get');
-// });
-
-// test('can select elements!', async context => {
-//   await context.page.goto('http://example.com/');
-
-//   const text = await context.page.evaluate(() => {
-//     return document.querySelector('h1').textContent;
-//   });
-
-//   assert.type(text, 'string');
-//   assert.is(text, 'Example Domain');
-// });
+test('can list directory', async context => {
+  // console.log('t2');
+  let directory = await context.page.evaluate(async () => {
+      return window.__API__.getDirectory('/');
+  });
+  assert.type(directory, 'object');
+  // TODO more asserts
+  });
+  
+test('can list directory', async context => {
+  // console.log('t3');
+  let directory = await context.page.evaluate(async () => {
+      return window.__API__.getDirectory('/');
+  });
+  assert.type(directory, 'object');
+  // TODO more asserts
+  });
 
 test.run();

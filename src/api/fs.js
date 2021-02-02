@@ -1,4 +1,20 @@
+/** This wasmFS filesystem is shared by JavaScript and Rust WASI subsystems.
+ * 
+ * For development we use the wasmFS.fs filesystem, but this will be replaced by
+ * a peer-to-peer filesystem in production. For example, the Safe Network sn_fs
+ * filesystem.
+ * 
+ * @namespace GitPortalAPI.filesystem
+ */
 
+/**
+/**
+ * get directory contents
+ *
+ * @memberOf GitPortalAPI.filesystem
+ * @export
+ * @return {*} 
+ */
 export async function getDirectory(){
     console.log("TODO api/fs.js getDirectory()")
     return [];
