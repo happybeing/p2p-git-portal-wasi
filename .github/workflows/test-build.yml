@@ -22,13 +22,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-    - uses: actions-rs/toolchain@v1
     - name: Use Rust target wasm32-wasi
+      uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
         target: wasm32-wasi
         override: true
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
