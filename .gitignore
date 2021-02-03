@@ -5,7 +5,7 @@
 /public/wasm/
 /docs/public/
 
-/src/wasi-gitportal*js
+/src/wasi-gitportal*.js
 
 .DS_Store
 yarn-error.log

@@ -22,8 +22,8 @@ export async function serversUp(){
 		await gitserver.startServer(5222);
 	} else if (mode === 'development') {
 		appserver = devserver;
-		await appserver.startServer(5111);
 		await gitserver.startServer(5222);
+		await appserver.startServer(5111);
 	}
 }
 
