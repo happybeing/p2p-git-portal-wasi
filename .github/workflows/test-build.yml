@@ -33,7 +33,6 @@ jobs:
         toolchain: stable
         target: wasm32-wasi
         override: true
-
       - run: npm install
       - run: cargo install wasm-bindgen-cli
       - run: npm run test:build
