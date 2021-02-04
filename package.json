@@ -27,7 +27,7 @@
     "test:all": "yarn test:config:dev && uvu src/__tests__ -i setup",
     "test:build": "yarn test:config:build && yarn build && uvu src/__tests__ -i setup",
     "test:watch": "watchlist src src/__tests__ -- yarn test:all",
-    "test:coverage": "c8 --include=src yarn test",
+    "test:coverage": "c8 --include=src yarn test:all",
     "test:report": "c8 report --reporter=text-lcov > coverage.lcov",
     "build": "rm -f public/wasm/* && yarn build-wasm-bindgen && yarn build-app && yarn docs",
     "build-app": "cross-env NODE_ENV=production webpack",
