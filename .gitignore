@@ -9,6 +9,3 @@
 
 .DS_Store
 yarn-error.log
-
-target/
-Cargo.lock
