@@ -1,6 +1,6 @@
 
 # Contributor Guidelines
-IMPORTANT: If you wish to contribute changes to this repository you must first read and accept to be bound by the terms described in the LICENSE section of the project README.
+IMPORTANT: If you wish to contribute changes to this repository you must first read and accept to be bound by the terms described in both the LICENSE section of the project [README](./README#license) and in the [Contributor Code of Conduct](./CODE_OF_CONDUCT.md).
 
 <!-- TOC -->
 
@@ -63,7 +63,7 @@ These guidelines will always be subject to review, but the following areas are e
 - **Tests** are only being required for the subsystem APIs at this time, but as the codebase grows we may need to extend this, requiring tests for internal JavaScript functions and Svelte components. For the same reason we may also need to require tests for individual Rust functions (and possibly including the tests contained in comments, as part of the internal documentation).
 
 ## Contributing To Code or Documentation
-If you wish to contribute changes you must first read and accept to be bound by the terms described in the LICENSE section of the project README.
+If you wish to contribute changes to this repository you must first read and accept to be bound by the terms described in both the LICENSE section of the project [README](./README#license) and in the [Contributor Code of Conduct](./CODE_OF_CONDUCT.md).
 
 Changes to code, README and other contents of the repository should be made on a fork and then submitted for review as a github Pull Request.
 

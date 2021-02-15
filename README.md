@@ -194,9 +194,11 @@ If you have problems, open the web browser console to look for any error message
 Note: drag and drop of files is not properly supported yet.
 
 ### Contributions
-Git Portal needs your help! If you think you can help in some way, not just by working on code, please read and follow contributor guidelines in [./CONTRIBUTING.md](./CONTRIBUTING.md).
+Git Portal needs your help! If you think you can help in some way, not just by working on code, please read and follow contributor guidelines in [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+This project is released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md) ([The Contributor Covenant](https://www.contributor-covenant.org/) v2.0). By participating in this project you agree to abide by its terms. 
 ## LICENSE
 
 Everything is GPL3.0 unless otherwise stated. Any contributions are accepted on the condition they conform to this license.
 
-See also [./LICENSE](./LICENSE)
+See also [LICENSE](./LICENSE)
