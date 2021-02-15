@@ -6,6 +6,7 @@
 /docs/public/
 
 /src/wasi-gitportal*.js
+/src/__tests__/setup/config.js
 
 .DS_Store
 yarn-error.log
