@@ -204,8 +204,7 @@ cargo clippy --all-targets
 ```
 
 ### Avoid Unsafe Code
-Unsafe Rust is only allowed where necessary so include `#![forbid(unsafe_code)]` at the top of each Rust source file, and only override this where writing unsafe code is *justified by an explanation* in code comments.
-
+Unsafe Rust is only allowed where necessary and in general *should be justified by an explanation* in code comments.
 ### Rust Error Handling
 There are three things to remember when returning an error from a Rust function:
 
