@@ -52,7 +52,7 @@ After the section about Pull Requests there are two sections solely for develope
 Being a product aimed at users of git and github or similar portals, the guidelines assume knowledge of these development tools. If there's anything not covered here or if you have questions which are not directly related to development, please ask on one of our community channels (listed in the README). For development related questions, see the next subsection on 'Issues, ...'.
 
 ## Issues, Bug Reports and Feature Requests
-The main means for managing and tracking work on this project is the 'Issues' section of the github repository. If you have anything to report or ask which relates to development, please search the existing issues, and open a new issue if you don't find one has already been opened.
+Managing and tracking work on this project is done via [GitHub issues](https://github.com/happybeing/p2p-git-portal-wasi/issues). If you have anything to report or ask which relates to development, please search the [existing issues](https://github.com/happybeing/p2p-git-portal-wasi/issues), and open a [new issue](https://github.com/happybeing/p2p-git-portal-wasi/issues/new/choose) if you don't find one that has already been opened.
 
 ## Areas Needing Attention
 These guidelines will always be subject to review, but the following areas are either not yet covered, or are particularly tentative and could do with input:
@@ -65,7 +65,7 @@ These guidelines will always be subject to review, but the following areas are e
 ## Contributing To Code or Documentation
 If you wish to contribute changes to this repository you must first read and accept to be bound by the terms described in both the LICENSE section of the project [README](./README#license) and in the [Contributor Code of Conduct](./CODE_OF_CONDUCT.md).
 
-Changes to code, README and other contents of the repository should be made on a fork and then submitted for review as a github Pull Request.
+Changes to code, README and other contents of the repository should be made on a fork and then submitted for review as a [GitHub Pull Request](https://github.com/happybeing/p2p-git-portal-wasi/pulls).
 
 # Pull Requests
 
@@ -83,9 +83,9 @@ Before submitting a pull request affecting the wasi-rust subsystem:
 - if you've modified internal APIs see above re wasi-js subsystem APIs
 - clear up any issues from `cargo clippy -- -D warnings`
 - format using `cargo fmt -- --check`
-- run `yarn test` and make sure all tests pass
+- run `cargo test` and make sure all tests pass
 
-We recommend using git hooks to automate the running of `clippy` and `rustfmt` before each commit, and the running of tests when you `git push`.
+We recommend using [git hooks](https://githooks.com/) to automate the running of `clippy` and `rustfmt` before each commit, and the running of tests when you `git push`.
 
 ## Submitting a Pull Request
 Create a temporary branch for the commits you wish to push
@@ -154,7 +154,7 @@ rustup command add clippy
 cargo install cargo-edit
 ```
 
-Before committing run `rustfmt` and `clippy`. I recommend setting up a git hook to do this automatically. Example commands to do this
+Before committing run `rustfmt` and `clippy`. We recommend [setting up a git hook](https://githooks.com/) to do this automatically. Example commands to do this
 manually:
 ```sh
 cargo fmt
@@ -171,7 +171,7 @@ cargo upgrade <module>
 
 ## Rust Coding Guidelines
 
-Please familiarise yourself with all of this section and when you see anyone deviating from it without obvious good reason let them know!
+Please familiarise yourself with all of this section and when you see anyone deviating from it without obvious good reason let them know.
 
 ### General
 Firstly please familiarise yourself with idiomatic Rust coding conventions by reading *The Rust Book* which you can find at [Learn Rust](https://www.rust-lang.org/learn).
@@ -180,7 +180,7 @@ Beware Rust examples! Most example code including those in official and crate do
 
 ### Changing Dependencies and Editing Cargo.toml
 
-Adding new dependencies should be discussed first by opening an issue. Using an issue helps us keep track of why a dependency was selected or rejects.
+Adding new dependencies should be discussed first by opening an issue. Using an issue helps us keep track of why a dependency was selected or rejected.
 
 Use `cargo-edit` to update dependencies or keep the `Cargo.toml` in the formatting that `cargo-edit` uses.
 
@@ -195,7 +195,7 @@ The first line of the commit message should no more than seventy characters and 
 If more details or comments about implementation are needed, continue on subsequent lines. Note that you can reference and automate the linking and closure of issues by including a [github commit keyword](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) (e.g. 'fixes #23') before the `#nn` issue reference.
 
 ### Rustfmt and Clippy
-As explained under tooling, you should use `rustfmt` and `clippy` on all code prior to commit, and can automate this by setting up a git hook in your fork. For example:
+As explained under tooling, you should use `rustfmt` and `clippy` on all code prior to commit, and can automate this by [setting up a git hook](https://githooks.com/) in your fork. For example:
 ```sh
 cd ./src/wasi-rust
 cargo fmt
