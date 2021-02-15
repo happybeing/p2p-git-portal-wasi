@@ -1,4 +1,3 @@
-// #![forbid(unsafe_code)]
 #![deny(clippy::all)]
 
 use wasm_bindgen::prelude::*;
@@ -28,6 +27,7 @@ fn main() {}
 
 #[wasm_bindgen(module = "wasiJs")]
 extern "C" {
+    #![allow(unsafe_code)]
     fn js_test();
     fn js_test_n(n: u32);
 }
