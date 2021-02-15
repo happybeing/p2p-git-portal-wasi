@@ -27,7 +27,6 @@ fn main() {}
 
 #[wasm_bindgen(module = "wasiJs")]
 extern "C" {
-    #![allow(unsafe_code)]
     fn js_test();
     fn js_test_n(n: u32);
 }
