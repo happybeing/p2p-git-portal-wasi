@@ -194,8 +194,7 @@ If you have problems, open the web browser console to look for any error message
 Note: drag and drop of files is not properly supported yet.
 
 ### Contributions
-If you wish to build or contribute to the code, get in touch and I'll add some build instructions as it requires some special setup using my fork of a webpack wasm plugin. Not hard, but not obvious!
-
+Git Portal needs your help! If you think you can help in some way, not just by working on code, please read and follow contributor guidelines in [./CONTRIBUTING.md](./CONTRIBUTING.md).
 ## LICENSE
 
 Everything is GPL3.0 unless otherwise stated. Any contributions are accepted on the condition they conform to this license.
