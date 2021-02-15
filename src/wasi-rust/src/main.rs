@@ -1,4 +1,5 @@
-#![forbid(unsafe_code)]
+// #![forbid(unsafe_code)]
+#![deny(clippy::all)]
 
 use wasm_bindgen::prelude::*;
 
@@ -29,8 +30,7 @@ fn main() {}
 extern "C" {
     fn js_test();
     fn js_test_n(n: u32);
- }
-
+}
 
 #[wasm_bindgen]
 pub fn rust_js_test() {
@@ -53,8 +53,8 @@ pub fn rust_print_bg_n(n: u32) {
 
 #[wasm_bindgen]
 pub fn rust_say(s: String) -> String {
-  let r = String::from("hello ");
-  return r + &s;
+    let r = String::from("hello ");
+    r + &s
 }
 
 // -------------------------------------------------------------
@@ -91,71 +91,77 @@ pub fn double_list(list: &[i32]) -> Vec<i32> {
 // Source:  https://github.com/second-state/wasm-learning/tree/master/nodejs/functions
 // More:    https://cloud.secondstate.io/server-side-webassembly/getting-started
 
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Point {
-  x: f32, 
-  y: f32
+    x: f32,
+    y: f32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Line {
-  points: Vec<Point>,
-  valid: bool,
-  length: f32,
-  desc: String
+    points: Vec<Point>,
+    valid: bool,
+    length: f32,
+    desc: String,
 }
 
 #[wasm_bindgen]
-pub fn create_line (p1: &str, p2: &str, desc: &str) -> String {
-  let point1: Point = serde_json::from_str(p1).unwrap();
-  let point2: Point = serde_json::from_str(p2).unwrap();
-  let length = ((point1.x - point2.x) * (point1.x - point2.x) + (point1.y - point2.y) * (point1.y - point2.y)).sqrt();
+pub fn create_line(p1: &str, p2: &str, desc: &str) -> String {
+    let point1: Point = serde_json::from_str(p1).unwrap();
+    let point2: Point = serde_json::from_str(p2).unwrap();
+    let length = ((point1.x - point2.x) * (point1.x - point2.x)
+        + (point1.y - point2.y) * (point1.y - point2.y))
+        .sqrt();
 
-  let valid = if length == 0.0 { false } else { true };
-  let line = Line { points: vec![point1, point2], valid: valid, length: length, desc: desc.to_string() };
-  return serde_json::to_string(&line).unwrap();
+    let valid = !(length == 0.0);
+    let line = Line {
+        points: vec![point1, point2],
+        valid,
+        length,
+        desc: desc.to_string(),
+    };
+    serde_json::to_string(&line).unwrap()
 }
 
 #[wasm_bindgen]
 pub fn say(s: &str) -> String {
-  let r = String::from("hello ");
-  return r + s;
+    let r = String::from("hello ");
+    r + s
 }
 
 #[wasm_bindgen]
 pub fn obfusticate(s: String) -> String {
-  (&s).chars().map(|c| {
-    match c {
-      'A' ..= 'M' | 'a' ..= 'm' => ((c as u8) + 13) as char,
-      'N' ..= 'Z' | 'n' ..= 'z' => ((c as u8) - 13) as char,
-      _ => c
-    }
-  }).collect()
+    (&s).chars()
+        .map(|c| match c {
+            'A'..='M' | 'a'..='m' => ((c as u8) + 13) as char,
+            'N'..='Z' | 'n'..='z' => ((c as u8) - 13) as char,
+            _ => c,
+        })
+        .collect()
 }
 
 use num_integer::lcm;
-use sha3::{Digest, Sha3_256, Keccak256};
+use sha3::{Digest, Keccak256, Sha3_256};
 
 #[wasm_bindgen]
 pub fn lowest_common_denominator(a: i32, b: i32) -> i32 {
-  let r = lcm(a, b);
-  return r;
+    lcm(a, b)
 }
 
 #[wasm_bindgen]
 pub fn sha3_digest(v: Vec<u8>) -> Vec<u8> {
-  return Sha3_256::digest(&v).as_slice().to_vec();
+    Sha3_256::digest(&v).as_slice().to_vec()
 }
 
 #[wasm_bindgen]
 pub fn keccak_digest(s: &[u8]) -> Vec<u8> {
-  return Keccak256::digest(s).as_slice().to_vec();
+    Keccak256::digest(s).as_slice().to_vec()
 }
 
 // -------------------------------------------------------------
-// wasm-bindgen book example 
+// wasm-bindgen book example
 // (https://rustwasm.github.io/docs/wasm-bindgen/reference/types/imported-js-types.html)
 
 #[wasm_bindgen]
@@ -283,21 +289,20 @@ pub fn h9q_file(src_file: String) {
     // }
 
     // if let Some(src_file) = opt.source_file {
-        match fs::File::open(&src_file) {
-            Ok(mut src_file_handle) => {
-                let mut buf = String::new();
-                src_file_handle
-                    .read_to_string(&mut buf)
-                    .expect(&format!("Failed to read data from file: {}", &src_file));
-                h9q_run(buf);
-            }, 
-            Err(e) => {
-                println!("Error: {}", e);
-                eprintln!(
+    match fs::File::open(&src_file) {
+        Ok(mut src_file_handle) => {
+            let mut buf = String::new();
+            src_file_handle
+                .read_to_string(&mut buf)
+                .unwrap_or_else(|_| panic!("Failed to read data from file: {}", &src_file));
+            h9q_run(buf);
+        }
+        Err(e) => {
+            println!("Error: {}", e);
+            eprintln!(
                     "Error: please pass HQ9+ source code via the `-e` flag or as a file via the `-f` flag"
                 );
-        //         ::std::process::exit(-1);
-            }
+            //         ::std::process::exit(-1);
         }
+    }
 }
-
