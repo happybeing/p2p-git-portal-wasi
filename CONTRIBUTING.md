@@ -83,7 +83,7 @@ Before submitting a pull request affecting the wasi-rust subsystem:
 - if you've modified internal APIs see above re wasi-js subsystem APIs
 - clear up any issues from `cargo clippy -- -D warnings`
 - format using `cargo fmt -- --check`
-- run `cargo test` and make sure all tests pass
+- run `yarn test` and make sure all tests pass
 
 We recommend using [git hooks](https://githooks.com/) to automate the running of `clippy` and `rustfmt` before each commit, and the running of tests when you `git push`.
 
