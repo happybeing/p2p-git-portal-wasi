@@ -35,4 +35,4 @@ jobs:
     - run: npm install
     - run: npm run test:build
     - run: cd src/wasi-rust && cargo fmt --all -- --check
-    - run: cd src/wasi-rust && cargo clippy -- --all-targets -D warnings
+    - run: cd src/wasi-rust && cargo clippy -- -D warnings
