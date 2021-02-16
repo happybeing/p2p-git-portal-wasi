@@ -34,7 +34,5 @@ jobs:
     - run: cargo install wasm-bindgen-cli
     - run: npm install
     - run: npm run test:build
-    - run: rustup component add rustfmt
-    - run: rustup component add clippy
-    - run: cd src/wasi-rust && cargo fmt
-    - run: cd src/wasi-rust && cargo clippy
+    - run: cd src/wasi-rust && cargo fmt --all -- --check
+    - run: cd src/wasi-rust && cargo clippy -- --all-targets -D warnings
