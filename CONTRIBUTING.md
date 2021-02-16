@@ -149,8 +149,8 @@ rustup update stable
 ```
 Install `rustfmt`, `clippy` and `cargo-edit`:
 ```sh
-rustup command add rustfmt
-rustup command add clippy
+rustup component add rustfmt
+rustup component add clippy
 cargo install cargo-edit
 ```
 
