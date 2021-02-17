@@ -90,12 +90,6 @@ From a peer-to-peer alternative to github and similar third party git portal ser
 * [Rust](https://www.rust-lang.org/tools/install)
 * [Rustup](https://rustup.rs/)
 
-### Compiling on Windows and other Platforms
-As suggested on the Rust install page, a compiler such as the one included with Windows Visual Studio may be required.
-For Windows, Visual Studio Build Tools 2019 requires a Windows SDK for your platform via [Visual Studio Installer](https://visualstudio.microsoft.com/downloads/). Choose Modify, C++ Build Tools, then add the Windows SDK.
-A console compiler such as [MingW](http://mingw-w64.org/doku.php/download)'s GCC (GNU Compiler Collection) supports most other platforms.
-Alternative IDEs for writing Rust such as [Atom](https://atom.io/) which have [Rust support](https://atom.io/packages/ide-rust) are available.
-
 ### WebAssembly (Wasm)
 As well as NodeJS and Rust you need the Rust `wasm32-wasi` target:
 ```bash
@@ -106,6 +100,12 @@ And the `wasm-bindgen` CLI:
 cargo install wasm-bindgen-cli
 ```
 **Note:** make sure `wasm-bindgen --version` matches the version of the `wasm-bingen` module in `Cargo.toml` (/src/rust-wasi-example/Cargo.toml). If the versions don't match after doing `cargo install wasm-bindgen-cli && wasm-bindgen --version`. Run `cargo update -p wasm-bindgen` to update your `Cargo.toml` and check the version now matches the CLI. You should ensure the versions match exactly.
+### Compiling on Windows and other Platforms
+As suggested on the Rust install page, a compiler such as the one included with Windows Visual Studio may be required.
+For Windows, Visual Studio Build Tools 2019 requires a Windows SDK for your platform via [Visual Studio Installer](https://visualstudio.microsoft.com/downloads/). Choose Modify, C++ Build Tools, then add the Windows SDK.
+A console compiler such as [MingW](http://mingw-w64.org/doku.php/download)'s GCC (GNU Compiler Collection) supports most other platforms.
+Alternative IDEs for writing Rust such as [Atom](https://atom.io/) which have [Rust support](https://atom.io/packages/ide-rust) are available.
+
 
 ### Quick Start! Get, Build, and Run the Code
 If you don't have `yarn` use `npm run` instead of `yarn` in the following:
@@ -131,9 +131,9 @@ To test, use `yarn serve public` and visit `localhost:5000`
 
 To deploy, upload everything from `./public`
 ## Automatic Rebuild and HMR
-`yarn watch-wasm-bindgen` watches for changes to the Rust subsystem (in `./src/wasi-rust`) and automatically re-builds the WASM and associated bindings as you edit the code.
+`yarn watch-build-dev` watches for changes to the Rust subsystem (in `./src/wasi-rust`) and automatically re-builds the WASM and associated bindings as you edit the code.
 
-You can use  `yarn watch-wasm-bindgen` together `yarn dev` so that changes to any part of the application will automatically rebuild and re-load the app in the browser as you work on the code.
+You can use  `yarn watch-build-dev` together `yarn dev` so that changes to any part of the application will automatically rebuild and re-load the app in the browser as you work on the code.
 
 To do this, in one terminal watch and re-build the app with:
 ```bash
@@ -141,7 +141,7 @@ yarn dev
 ```
 Then in another terminal, watch and re-build the Rust subsystem with:
 ```bash
-yarn watch-wasm-bindgen
+yarn watch-build-dev
 ```
 
 If you're using VSCode, we recommend installing the offical Svelte extension as well as the offical Rust extension. If you are using other editors, your may need to install a plugin in order to get syntax highlighting and intellisense for both Svelte and Rust.
