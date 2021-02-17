@@ -148,17 +148,16 @@ If you're using VSCode, we recommend installing the offical Svelte extension as 
 ## Testing
 We use `uvu` with `puppeteer` to run automatic tests on development and production builds.
 
-### Development Tests
+### Development Testing
 ```bash
 yarn test       # Runs tests until one fails
 yarn test:all   # Runs all tests
 yarn test:watch # Automatically re-runs tests as you edit code
 ```
 
-### Production Tests
+### Production Testing
 ```bash
-yarn test:build # Creates a production build and tests it
-yarn test:all   # Runs all tests
+yarn test:build # Creates a production build and runs all tests
 ```
 
 ### Test Reports
