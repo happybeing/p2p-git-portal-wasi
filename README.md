@@ -20,7 +20,7 @@ This prototype follows on from a proof-of-concept developed in the repository [p
 <img src="./gitportal-poc-screenshot.png"/>
 
 ### Proof-of-Concept Features
-The proof-of-concept is a static HTML no-backend app (so no-server side code). 
+The proof-of-concept is a static HTML no-backend app (so no-server side code).
 
 You can create or upload repositories immediately using the buttons provided, but in order to clone a repository need to use a proxy or a browser plugin to avoid problems with CORS checks in the browser. A proxy is necessary for github, but a browser plugin is enough for some git services such as gitlab. See the [section on CORS](#setup-a-cors-proxy) if you wish to try out the clone feature.
 
@@ -28,7 +28,7 @@ Once you have a repository stored in Git Portal you will be able to browse the f
 
 The UI does not yet allow you to create or edit issues.
 ## Git Portal Prototype
-Following on from the proof-of-concept, we are developing a Git Portal prototype using an improved architecture. Like the proof-of-concept, this will run from static web hosting or from the peer-to-peer storage such as [Safe Network](https://safenetwork.tech) (a secure, anonymous, private peer-to-peer storage and communications platform). 
+Following on from the proof-of-concept, we are developing a Git Portal prototype using an improved architecture. Like the proof-of-concept, this will run from static web hosting or from the peer-to-peer storage such as [Safe Network](https://safenetwork.tech) (a secure, anonymous, private peer-to-peer storage and communications platform).
 ## Development Approach
 The prototype is being built using a **Svelte** front-end and a combination of **Rust/WASM** and **JavaScript/NodeJS** for the application logic, on top of **WasmerJS/WASI**.
 
@@ -36,7 +36,7 @@ The prototype is being built using a **Svelte** front-end and a combination of *
 
 **WASM** is preferred where possible for application-logic because it produces fast, compact code and allows us to develop in **Rust** which is productive, reduces scope for bugs and improves security.
 
-Building on **WasmerJS/WASI** allows us to speed development by use existing **JavaScript/NodeJS** libraries in the short term with the option to re-write or replace them later. For example where `git` functionality is available in NodeJS but not yet in Rust we can reduce the amount of new Rust code needing to be written. 
+Building on **WasmerJS/WASI** allows us to speed development by use existing **JavaScript/NodeJS** libraries in the short term with the option to re-write or replace them later. For example where `git` functionality is available in NodeJS but not yet in Rust we can reduce the amount of new Rust code needing to be written.
 
 **Rust** will be used for features not yet available in NodeJS such as extensions for git issues, pull requests and additional application-logic.
 
@@ -51,7 +51,7 @@ The earlier [proof-of-concept](https://github.com/happyborg/p2p-git-portal-poc) 
 - Svelte UI with Rust/WASI and JavaScript application-logic
 - *in the browser*, no-server (no-backend)
 ### Features
-- initialise, clone or upload repository 
+- initialise, clone or upload repository
 - list repositories
 - select and interact with a repository
 - browse the worktree, commits and issues
@@ -67,7 +67,7 @@ So there's plenty to do in all areas, including some in the first proof-of-conce
 ### Activity & Opportunities to Help
 
 #### Proof-of-Concept
-- **Features and UI** - Work continues to extend and improve functionality and UI based on the proof-of-concept: Go/Wasm no-backend, and Svelte/Tailwind CSS front-end. Suggestions and discussion of UI/UX are welcome on [#issue 1](https://github.com/happybeing/p2p-git-portal-poc/issues/1). **Help is welcome** with several small tasks in Svelte front-end and Golang no-server no-backend, but these are not yet written down. So ask if you may be able to help and I will begin to turn my thoughts into tasks with your prompting. Bigger tasks will flow from this if you want to help design or implement the features and API providing these to the front-end. 
+- **Features and UI** - Work continues to extend and improve functionality and UI based on the proof-of-concept: Go/Wasm no-backend, and Svelte/Tailwind CSS front-end. Suggestions and discussion of UI/UX are welcome on [#issue 1](https://github.com/happybeing/p2p-git-portal-poc/issues/1). **Help is welcome** with several small tasks in Svelte front-end and Golang no-server no-backend, but these are not yet written down. So ask if you may be able to help and I will begin to turn my thoughts into tasks with your prompting. Bigger tasks will flow from this if you want to help design or implement the features and API providing these to the front-end.
 #### Git Portal Product - Top Level Tasks
 In no particular order:
 - [x] adapt WASI demo architecture for this project
@@ -86,7 +86,18 @@ From a peer-to-peer alternative to github and similar third party git portal ser
 
 # Development Setup
 ## Prerequisites
-As well as NodeJS (v12 or later) and Rust you need the Rust `wasm32-wasi` target:
+* [NodeJS](https://nodejs.org/en/) (v12 or later)
+* [Rust](https://www.rust-lang.org/tools/install)
+* [Rustup](https://rustup.rs/)
+
+### Compiling on Windows and other Platforms
+As suggested on the Rust install page, a compiler such as the one included with Windows Visual Studio may be required.
+For Windows, Visual Studio Build Tools 2019 requires a Windows SDK for your platform via [Visual Studio Installer](https://visualstudio.microsoft.com/downloads/). Choose Modify, C++ Build Tools, then add the Windows SDK.
+A console compiler such as [MingW](http://mingw-w64.org/doku.php/download)'s GCC (GNU Compiler Collection) supports most other platforms.
+Alternative IDEs for writing Rust such as [Atom](https://atom.io/) which have [Rust support](https://atom.io/packages/ide-rust) are available.
+
+### WebAssembly (Wasm)
+As well as NodeJS and Rust you need the Rust `wasm32-wasi` target:
 ```bash
 rustup target add wasm32-wasi
 ```
@@ -95,34 +106,34 @@ And the `wasm-bindgen` CLI:
 cargo install wasm-bindgen-cli
 ```
 **Note:** make sure `wasm-bindgen --version` matches the version of the `wasm-bingen` module in `Cargo.toml` (/src/rust-wasi-example/Cargo.toml). If the versions don't match after doing `cargo install wasm-bindgen-cli && wasm-bindgen --version`. Run `cargo update -p wasm-bindgen` to update your `Cargo.toml` and check the version now matches the CLI. You should ensure the versions match exactly.
-## Get the Code
+
+### Quick Start! Get, Build, and Run the Code
 If you don't have `yarn` use `npm run` instead of `yarn` in the following:
 ```bash
 git clone https://github.com/happybeing/p2p-git-portal-wasi
 cd p2p-git-portal-wasi
-yarn && yarn dev-wasm-bindgen && yarn dev
+yarn && yarn build-dev && yarn dev
 ```
 Once the development build completes you can visit the app at localhost:8080.
 
-# Building
+# Build Options
+## Development Build
+To re-build the WASM and serve the result:
+```bash
+yarn build-dev && yarn dev
+```
 ## Release Build
 To build for release:
 ```bash
-yarn && yarn build
+yarn && yarn build-release
 ```
 To test, use `yarn serve public` and visit `localhost:5000`
 
 To deploy, upload everything from `./public`
-## Development Build
-To re-build the WASM and serve the result:
-```bash
-yarn dev-wasm-bindgen
-yarn dev
-```	
 ## Automatic Rebuild and HMR
 `yarn watch-wasm-bindgen` watches for changes to the Rust subsystem (in `./src/wasi-rust`) and automatically re-builds the WASM and associated bindings as you edit the code.
- 
-You can use  `yarn watch-wasm-bindgen` together `yarn dev` so that changes to any part of the application will automatically rebuild and re-load the app in the browser as you work on the code. 
+
+You can use  `yarn watch-wasm-bindgen` together `yarn dev` so that changes to any part of the application will automatically rebuild and re-load the app in the browser as you work on the code.
 
 To do this, in one terminal watch and re-build the app with:
 ```bash
@@ -183,7 +194,7 @@ TODO review and update...
 
 The above is all that's needed to test and for most development.
 
-Make sure you have the proxy running and make sure the proxy URI is set correctly in the UI. Now click "Clone". 
+Make sure you have the proxy running and make sure the proxy URI is set correctly in the UI. Now click "Clone".
 
 A sample repository is already set in the UI, and should be cloned in a few seconds. Large repositories will of course take much longer, so be prepared to wait!
 
