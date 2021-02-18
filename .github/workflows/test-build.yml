@@ -12,10 +12,11 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest]
         node-version: [12.x, 14.x, 15.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
@@ -32,7 +33,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: cargo install wasm-bindgen-cli
-    - run: npm install
-    - run: npm run test:build
+    - run: yarn
+    - run: yarn run test:build
     - run: cd src/wasi-rust && cargo fmt --all -- --check
     - run: cd src/wasi-rust && cargo clippy -- -D warnings
