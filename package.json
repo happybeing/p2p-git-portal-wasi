@@ -19,8 +19,11 @@
     "rust"
   ],
   "scripts": {
-    "docs": "yarn jsdoc src -r -c jsdoc.json -d docs/public && cat docs/extra-styles.css >> docs/public/styles/jsdoc.css",
+    "docs": "yarn docs:api && yarn docs:rust",
+    "docs:api": "yarn jsdoc src -r -c jsdoc.json -d docs/public && cat docs/extra-styles.css >> docs/public/styles/jsdoc.css",
     "docs:show": "firefox docs/public/index.html",
+    "docs:rust": "cd ./src/wasi-rust && cargo doc",
+    "docs:rust:show": "firefox src/wasi-rust/target/doc/wasi_gitportal/index.html",
     "test:config:dev": "echo 'export let mode = \"development\";' > ./src/__tests__/setup/config.js",
     "test:config:build": "echo 'export let mode = \"production\";' > ./src/__tests__/setup/config.js",
     "test": "yarn test:config:dev && uvu src/__tests__ -b -i setup",
