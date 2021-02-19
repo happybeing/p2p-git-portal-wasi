@@ -74,12 +74,12 @@ In no particular order:
 - [x] select and implement test framework for internal API
 - [x] set up continuous integration (CI) on github
 - [x] set up JSDoc to generate documentation for internal API
+- [x] fill out section below on Rust documentation
 - [ ] migrate UI from proof-of-concept
 - [ ] identify suitable `git` functionality ACTIVE
 - [ ] design an API to support front-end ACTIVE
 - [ ] develop `gitbug-rs` with selected `git-bug` features
-- [ ] fill out section below on Rust documentation
-- [ ] update notes on development using proxy etc (see bottom)
+- [ ] update notes on development using proxy etc (see TODO below)
 ### Git Portal Vision
 
 From a peer-to-peer alternative to github and similar third party git portal services, we will develop our vision for a community driven and oriented feature set with our own visual identity. This means re-inventing the git portal without the goal of centralisation, and instead to share and return value created by the community in whatever ways the community can benefit.
@@ -144,7 +144,7 @@ Then in another terminal, watch and re-build the Rust subsystem with:
 yarn watch-build-dev
 ```
 
-If you're using VSCode, we recommend installing the offical Svelte extension as well as the offical Rust extension. If you are using other editors, your may need to install a plugin in order to get syntax highlighting and intellisense for both Svelte and Rust.
+If you're using VSCode, we recommend installing the official Svelte extension as well as the official Rust extension. If you are using other editors, your may need to install a plugin in order to get syntax highlighting and intellisense for both Svelte and Rust.
 ## Testing
 We use `uvu` with `puppeteer` to run automatic tests on development and production builds.
 
@@ -169,24 +169,32 @@ To generate a report from the last run tests in `./coverage.lcov`.
 ```bash
 yarn test:report    # Provides a report for the last test run
 ```
-## Creating Tests and API Documentation
+## Creating Tests and Documentation
 Testing is based on the internal JavaScript API used by the front-end to interact with the business-logic implemented in `./src/wasi-js` and `./src/wasi-rust`.
 
 Every JavaScript API in `./src/api` will have it's own test, and include documentation using JSDoc comments.
 
 ### Writing Tests
 Tests are currently all in `./src/__tests__/index.js` but will be split into separate files (`uvu` 'suites') as the API grows. See the `uvu` [documentation](https://github.com/lukeed/uvu) for more on writing tests and how to split them into suites.
-### Writing API Documentation
-The internal API documentation is generated from JSDoc comments in the `./src/api` JavaScript source code.
+### Front-end and JavaScript Documentation
+We maintain one set of documentation for the front-end and JavaScript subsystem (using JSDoc) and another for the Rust subsystem (using `cargo doc`). This is convenient to generate and use because most developers will be focussed on one or the other, even if they work on both over time.
 
-Documentation is generated in `./docs/public/` using the command:
-```bash
-yarn docs
+The following commands will generate and show documentation for the Front-end and JavaScript API (`./src/api`).
+
+```sh
+yarn docs           # Generates both sets of documentation
+yarn docs:show      # Assumes Firefox
 ```
-You can launch the docs in a browser, and if you have `Firefox` the command `yarn docs:show` will do this for you.
+If not using Firefox, a good entry point for any browser is `docs/public/index.html`.
+### Rust Subsystem Documentation
+Developer documentation for the `wasi-rust` subsystem is generated using `cargo doc`. The commands to generate and view this are:
 
-### Rust Documentation
-TODO
+```sh
+yarn docs           # Generates both sets of documentation
+yarn docs:rust:show # Assumes Firefox
+```
+If not using Firefox, a good entry point for any browser is `src/wasi-rust/target/doc/wasi_gitportal/index.html`.
+
 
 ## Notes Requiring Update
 TODO review and update...
