@@ -32,8 +32,21 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+
+    - run: echo Installation
     - run: cargo install wasm-bindgen-cli
     - run: yarn
-    - run: yarn run test:build
+
+    - run: echo "Build and Test (Development)"
+    - run: yarn build:dev
+    - run: yarn test
+
+    - run: echo "Build and Test (Production)"
+    - run: yarn test:build
+
+    - run: echo Rust Checks
     - run: cd src/wasi-rust && cargo fmt --all -- --check
     - run: cd src/wasi-rust && cargo clippy -- -D warnings
+
+    - run: echo "Generate Documentation (JSDoc then Rust)"
+    - run: yarn docs
