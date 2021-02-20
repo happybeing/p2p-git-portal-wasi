@@ -128,11 +128,17 @@ Note: VSCode and other editors have add-ons which will generate
 a comment template from a function definition.
 
 ## Writing Tests
-If you extend or modify the `wasi-js` API in `./src/api` add to or update the tests in `./src/__tests__`. 
+Testing is based on the internal JavaScript API in `./src/api`. The JavaScript API is used by the front-end to interact with the business-logic implemented in `./src/wasi-js` and `./src/wasi-rust`.
 
-Run `yarn test` or `yarn test:build` to run the tests on development or production. More test commands are documented in the main README.
+- Every JavaScript API in `./src/api` will have it's own test, and include documentation using JSDoc comments.
 
-Continuous Integration (CI) on github is used to run the tests automatically on new and updated Pull Requests.
+- If you extend or modify the `wasi-js` API in `./src/api` add to or update the tests in `./src/__tests__`.
+
+- Run `yarn test` or `yarn test:build` to run the tests on development or production. More test commands are documented in the main README.
+
+Tests are currently all in `./src/__tests__/index.js` but will be split into separate files (`uvu` 'suites') as the API grows. See the `uvu` [documentation](https://github.com/lukeed/uvu) for more on writing tests and how to split them into suites.
+
+Continuous Integration (CI) on github is used to run the tests automatically on new and updated Pull Requests so it helps if you make sure all tests pass before opening a pull request, as well as ensuring there is adequate coverage for any changes you contribute.
 
 # Contributing to the wasi-rust subsystem
 This section is for contributors to the Rust `wasi-rust` subsystem in `./src/wasi-rust`.

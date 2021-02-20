@@ -57,7 +57,7 @@ The earlier [proof-of-concept](https://github.com/happyborg/p2p-git-portal-poc) 
 - browse the worktree, commits and issues
 - create/view/edit issues and comments
 
-## Current Status
+## Prototype Status
 
 We have the Go/WASM based [proof-of-concept](https://github.com/happyborg/p2p-git-portal-poc) featuring most of the above functionality and a live demo at http://gitch.happybeing.com.
 
@@ -169,16 +169,12 @@ To generate a report from the last run tests in `./coverage.lcov`.
 ```bash
 yarn test:report    # Provides a report for the last test run
 ```
-## Creating Tests and Documentation
-Testing is based on the internal JavaScript API used by the front-end to interact with the business-logic implemented in `./src/wasi-js` and `./src/wasi-rust`.
-
-Every JavaScript API in `./src/api` will have it's own test, and include documentation using JSDoc comments.
-
-### Writing Tests
-Tests are currently all in `./src/__tests__/index.js` but will be split into separate files (`uvu` 'suites') as the API grows. See the `uvu` [documentation](https://github.com/lukeed/uvu) for more on writing tests and how to split them into suites.
-### Front-end and JavaScript Documentation
+## Developer Documentation
 We maintain one set of documentation for the front-end and JavaScript subsystem (using JSDoc) and another for the Rust subsystem (using `cargo doc`). This is convenient to generate and use because most developers will be focussed on one or the other, even if they work on both over time.
 
+Developers wishing to contribute code can find guidelines on writing tests and documentation in the Contributor Guidelines (see [CONTRIBUTING](#contributing)).
+
+### Front-end and JavaScript Documentation
 The following commands will generate and show documentation for the Front-end and JavaScript API (`./src/api`).
 
 ```sh
@@ -194,8 +190,6 @@ yarn docs           # Generates both sets of documentation
 yarn docs:rust:show # Assumes Firefox
 ```
 If not using Firefox, a good entry point for any browser is `src/wasi-rust/target/doc/wasi_gitportal/index.html`.
-
-
 ## Notes Requiring Update
 TODO review and update...
 
@@ -211,7 +205,7 @@ If you have problems, open the web browser console to look for any error message
 
 Note: drag and drop of files is not properly supported yet.
 
-### Contributions
+## CONTRIBUTING
 Git Portal needs your help! If you think you can help in some way, not just by working on code, please read and follow contributor guidelines in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 This project is released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md) ([The Contributor Covenant](https://www.contributor-covenant.org/) v2.0). By participating in this project you agree to abide by its terms. 
