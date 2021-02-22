@@ -9,6 +9,8 @@ onMount(async () => {
 	stdout = await getStdout();
 });
 
+import { testGit } from './api'
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Copied from proof-of-concept
 
@@ -176,6 +178,8 @@ href='https://safenetwork.tech'>Safe Network</a>. Read more on github at <a
 href='https://github.com/happybeing/p2p-git-portal-wasi'>p2p-git-portal-wasi</a>.</p>
 
 <div class='top-grid'>
+	<button type="button" on:click={() => { testGit(); }}>Test Git</button>
+
 	<RepoDashboardPanel bind:activeRepository={activeRepository} bind:allRepositories={allRepositories}></RepoDashboardPanel>
 	<IssuesListingPanel bind:repositoryRoot={repositoryRoot}></IssuesListingPanel>
 </div>
