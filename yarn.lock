@@ -20,10 +20,40 @@
     "@es-git/mix" "^0.10.0"
     text-encoding-utf-8 "^1.0.2"
 
+"@es-git/load-as-mixin@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@es-git/load-as-mixin/-/load-as-mixin-0.10.0.tgz#dcacd0a985b276008a529cf88fbc0c364aeda13a"
+  integrity sha512-ekVTAxcfroppMgjas1PLT8hDaw91krusV2DFXOn5adRMqhjn2HPQmiAX6P0c1Egtq+99QgZjxmRudzIS0MnmzQ==
+  dependencies:
+    "@es-git/core" "^0.10.0"
+    "@es-git/object-mixin" "^0.10.0"
+
+"@es-git/memory-repo@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@es-git/memory-repo/-/memory-repo-0.10.0.tgz#57105cfc734f32db2b9a05bca5dde05c220635af"
+  integrity sha512-5DgZeQwDjSAZWagHZiWsKilUTYlDIo84m3mTaA7uASWGrLRDtc5xU7IoXlJ7ZA2qwiQPRimDe9BroAo4XpKvLg==
+  dependencies:
+    "@es-git/core" "^0.10.0"
+
 "@es-git/mix@^0.10.0":
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@es-git/mix/-/mix-0.10.0.tgz#d260c0fcb1ad63abca28f9d82f8a49cce2898283"
   integrity sha512-306y/wg20d2V7i0k4HASvmn0W4O8JvI2X9Wx67VjEGs/xgFaeo7mnc3gG9GvXdLxv0QGQ1CYtveZF8QTYcS4jg==
+
+"@es-git/object-mixin@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@es-git/object-mixin/-/object-mixin-0.10.0.tgz#5e5a038d65dc5c8feb37776ab7125defa9873473"
+  integrity sha512-q1P2i6a0ZttRaZKHara461vGkoX3+raWcdzifMlH5+5qdFxp0fDKVIziGWPl2ZE90evwO69WyOzu9l7mLqNi2Q==
+  dependencies:
+    "@es-git/core" "^0.10.0"
+
+"@es-git/save-as-mixin@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@es-git/save-as-mixin/-/save-as-mixin-0.10.0.tgz#a2b3e11a90a06b265a5740fd9d0e6b6175ad79ba"
+  integrity sha512-nvgEafbAX41OhX4LAd3W9Is0yrGUp6U+e9fkPUIhrUq/8ecYNpW1drFSti8+DEMGxpVkaPy5eolYXy1iVVr/cg==
+  dependencies:
+    "@es-git/core" "^0.10.0"
+    "@es-git/object-mixin" "^0.10.0"
 
 "@istanbuljs/schema@^0.1.2":
   version "0.1.2"
