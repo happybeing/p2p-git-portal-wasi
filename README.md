@@ -77,7 +77,10 @@ In no particular order:
 - [x] fill out section below on Rust documentation
 - [x] identify suitable `git` functionality
 - [ ] migrate UI from proof-of-concept
-- [ ] verify `es-git` features on separate fs (@happybeing)
+- [ ] verify `es-git` features using memfs (@happybeing)
+    - [ ] clone remote
+    - [ ] list commits
+    - [ ] browse worktree
 - [ ] create `wasmFS` module and use to integrate `es-git`
 - [ ] design an API to support front-end (@happybeing)
 - [ ] develop `gitbug-rs` with selected `git-bug` features
