@@ -75,9 +75,11 @@ In no particular order:
 - [x] set up continuous integration (CI) on github
 - [x] set up JSDoc to generate documentation for internal API
 - [x] fill out section below on Rust documentation
+- [x] identify suitable `git` functionality
 - [ ] migrate UI from proof-of-concept
-- [ ] identify suitable `git` functionality ACTIVE
-- [ ] design an API to support front-end ACTIVE
+- [ ] verify `es-git` features on separate fs (@happybeing)
+- [ ] create `wasmFS` module and use to integrate `es-git`
+- [ ] design an API to support front-end (@happybeing)
 - [ ] develop `gitbug-rs` with selected `git-bug` features
 - [ ] update notes on development using proxy etc (see TODO below)
 ### Git Portal Vision
