@@ -77,11 +77,12 @@ In no particular order:
 - [x] fill out section below on Rust documentation
 - [x] identify suitable `git` functionality
 - [ ] migrate UI from proof-of-concept
-- [ ] verify `es-git` features using memfs (@happybeing)
-    - [ ] clone remote
-    - [ ] list commits
+- [x] Submit 'byo-fs-repo' PR for `es-git`
+- [ ] verify `es-git` on WasmFS using ByoFsRepo (@happybeing)
+    - [x] add commit
+    - [x] list commits
     - [ ] browse worktree
-- [ ] create `wasmFS` module and use to integrate `es-git`
+    - [ ] clone remote
 - [ ] design an API to support front-end (@happybeing)
 - [ ] develop `gitbug-rs` with selected `git-bug` features
 - [ ] update notes on development using proxy etc (see TODO below)
@@ -213,7 +214,7 @@ Note: drag and drop of files is not properly supported yet.
 ## CONTRIBUTING
 Git Portal needs your help! If you think you can help in some way, not just by working on code, please read and follow contributor guidelines in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-This project is released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md) ([The Contributor Covenant](https://www.contributor-covenant.org/) v2.0). By participating in this project you agree to abide by its terms. 
+This project is released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md) ([The Contributor Covenant](https://www.contributor-covenant.org/) v2.0). By participating in this project you agree to abide by its terms.
 ## LICENSE
 
 Everything is GPL3.0 unless otherwise stated. Any contributions are accepted on the condition they conform to this license.
