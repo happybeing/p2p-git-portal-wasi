@@ -8,8 +8,7 @@
  */
 
 /**
-/**
- * get directory contents
+ * Get directory contents
  *
  * @memberOf GitPortalAPI.filesystem
  * @export
