@@ -1,6 +1,7 @@
 <script>
 import {onMount} from "svelte"
 import {initialiseWasm, getStdout, uploadFile} from './api'
+import { makeTestRepo, getRepositoryList, newRepository } from './api'
 
 let stdout = "";
 
@@ -9,7 +10,6 @@ onMount(async () => {
 	stdout = await getStdout();
 });
 
-import { testGit } from './api'
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Copied from proof-of-concept
@@ -67,8 +67,13 @@ async function makeNewRepo() {
 	await updateRepositoryUI(newRepoName)
 }
 
+async function GitTest() {
+	await makeTestRepo();
+	await updateRepositoryUI(newRepoName)
+}
+
 // Development:
-let allRepositories = [];
+let allRepositories = [];	// Array of {path, repo}
 
 async function readFile(entry, successCallback, errorCallback) {
     let reader = new FileReader();
@@ -133,18 +138,22 @@ async function uploadFiles(uploadRoot, filesToUpload) {
 }
 
 async function updateRepositoryUI(newRepoPath) {
+	console.log('updateRepositoryUI()');
 	allRepositories = await getRepositoryList();
 	setActiveRepository(newRepoPath)
 }
 
 function setActiveRepository(repoDirectory) {
+	console.log('setActiveRepository()');
 	for (let index = 0; index < allRepositories.length; index++) {
 		let repo = allRepositories[index]
 		if (repo.path === repoDirectory) {
+			console.log('to ' + index);
 			activeRepository = index
 			return
 		}
 	}
+	console.log('NOT SET ');
 }
 
 function getRepositoryForDirectory(directoryName) {
@@ -177,9 +186,9 @@ using Svelte and Rust/Web Assembly on WasmerJS (WASI/WASM) to run on peer-to-pee
 href='https://safenetwork.tech'>Safe Network</a>. Read more on github at <a
 href='https://github.com/happybeing/p2p-git-portal-wasi'>p2p-git-portal-wasi</a>.</p>
 
-<div class='top-grid'>
-	<button type="button" on:click={() => { testGit(); }}>Test Git</button>
+<button type="button" on:click={() => { GitTest(); }}>Make Test Repo</button>
 
+<div class='top-grid'>
 	<RepoDashboardPanel bind:activeRepository={activeRepository} bind:allRepositories={allRepositories}></RepoDashboardPanel>
 	<IssuesListingPanel bind:repositoryRoot={repositoryRoot}></IssuesListingPanel>
 </div>
@@ -197,7 +206,7 @@ href='https://github.com/happybeing/p2p-git-portal-wasi'>p2p-git-portal-wasi</a>
 			{currentUpload}
 		{/if}
 	</div>
-	<CommitsListingPanel bind:activeRepository={activeRepository} bind:allRepositories={allRepositories}></CommitsListingPanel>
+	<CommitsListingPanel bind:repositoryRoot={repositoryRoot}></CommitsListingPanel>
 </div>
 
 {#if errorMessage}

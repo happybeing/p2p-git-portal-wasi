@@ -55,6 +55,14 @@
     "@es-git/core" "^0.10.0"
     "@es-git/object-mixin" "^0.10.0"
 
+"@es-git/walkers-mixin@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@es-git/walkers-mixin/-/walkers-mixin-0.10.0.tgz#800e5257d976919e296b7de68768a76b19534139"
+  integrity sha512-BR2rFCs6hfcimB4MSijkDQOKfHtL/4hcVBs9XqRTZeA7aMA+PlrtR148uiibZV7qqoaS5r7OYhogS8u5kGxTqw==
+  dependencies:
+    "@es-git/core" "^0.10.0"
+    "@es-git/object-mixin" "^0.10.0"
+
 "@istanbuljs/schema@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"

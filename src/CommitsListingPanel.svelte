@@ -1,11 +1,7 @@
 <script>
 // Show commits for the active repository
 
-// import wasm from './main.go';
-// const { getHeadCommitsRange } = wasm;
-// TODO implement the following stubs
-function getHeadCommitsRange(){}
-
+import { getHeadCommitsRange } from './api'
 
 export let repositoryRoot;
 
@@ -16,21 +12,18 @@ let commits = [];
 async function updateCommitsListing(repoPath) {
     console.log("updateCommitsListing() repoPath: ", repoPath);
     commits = [];
-    let result = [];
     let commitsRange;
     if (repoPath) {
         try {
             commitsRange = await getHeadCommitsRange(repoPath, 0, 10);
-            console.dir(commitsRange);
-            if (commitsRange !== undefined && commitsRange && commitsRange.commits !== undefined) {
-                result = commitsRange.commits;
-            }
+            commits = [...commitsRange];
+            // console.dir(commitsRange);
         } catch(e) {
+            console.log("Error: " + e);
             return;
         }
     }
 
-    commits = [...result];
     // console.log("commits now: ");
     // console.dir(commits);
 }

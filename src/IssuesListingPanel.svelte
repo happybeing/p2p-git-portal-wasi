@@ -4,7 +4,7 @@
 // import wasm from './main.go';
 // const { getIssuesForRepo } = wasm;
 // TODO implement the following stubs
-function getIssuesForRepo(){}
+function getIssuesForRepo(){ return [];}
 
 export let repositoryRoot;
 

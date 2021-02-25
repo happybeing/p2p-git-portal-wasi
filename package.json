@@ -76,6 +76,7 @@
     "@es-git/load-as-mixin": "^0.10.0",
     "@es-git/memory-repo": "^0.10.0",
     "@es-git/object-mixin": "^0.10.0",
-    "@es-git/save-as-mixin": "^0.10.0"
+    "@es-git/save-as-mixin": "^0.10.0",
+    "@es-git/walkers-mixin": "^0.10.0"
   }
 }
