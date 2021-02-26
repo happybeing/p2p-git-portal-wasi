@@ -1,7 +1,7 @@
 /**
- * This internal API separates the front-end from the application logic which is implemented 
+ * This internal API separates the front-end from the application logic which is implemented
  * using a mixture of JavaScript and Rust on top of a WasmerJS/WASI subsystem.
- * 
+ *
  * @namespace GitPortalAPI
  */
 
@@ -11,11 +11,8 @@ import browserBindings from '@wasmer/wasi/lib/bindings/browser'
 import { SomeJsType } from '../wasi-js/wasiJs.js'
 
 import * as wasiJs from '../wasi-js/wasiJs.js'		// JavaScript subsystem
-import * as wasmBindings from '../wasi-gitportal_bg_wasi.js'	// Bindings for Rust subsystem (using wasm-bindgen) 
+import * as wasmBindings from '../wasi-gitportal_bg_wasi.js'	// Bindings for Rust subsystem (using wasm-bindgen)
 const wasmFilePath = '/wasm/wasi-gitportal_bg.wasm' // Rust subsystem
-
-export let wasm = wasmBindings;
-export let fs;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -25,6 +22,8 @@ export let fs;
 // When running on the server, NodeJS's native FS module is assigned by default
 
 const wasmFs = new WasmFs()
+export let wasm = wasmBindings;
+export let fs = wasmFs.fs.promises;
 
 let wasi = new WASI({
 	args: [wasmFilePath],	// Rust main() must be empty so params not needed here
@@ -75,7 +74,7 @@ const startWasiTask = async (pathToWasmFile) => {
 
 	// Imports for WASI:
 	// - js-wasi/jsWasi.js JavaScript exports for Rust
-	// - wasm-bindgen Rust exports for JavaScript 
+	// - wasm-bindgen Rust exports for JavaScript
 	imports = {wasiJs,...{'./wasi-gitportal_bg.js': await import('../wasi-gitportal_bg_wasi')},...imports};
 
 	let instance = await WebAssembly.instantiate(wasmModule, {
@@ -188,7 +187,7 @@ const startWasiTask = async (pathToWasmFile) => {
 	// -------------------------------------------------------------
 	console.log("** h9q_file() test **");
 	// See result as 'stdout' in the page
-	wasm.h9q_file(hq9Filename);		// Reads the H9Q+ code from the file (written above) 
+	wasm.h9q_file(hq9Filename);		// Reads the H9Q+ code from the file (written above)
 
 	await wasmFs.fs.readdir('/', (e, files) => {
 		if (e) console.log("error:", e);
