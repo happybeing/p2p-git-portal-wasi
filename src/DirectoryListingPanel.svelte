@@ -23,19 +23,19 @@ async function updateRepository(repositoryRoot) {
 }
 
 async function updateDirectory(directoryPath) {
-    // console.log("updateDirectory(): ", directoryPath)    
+    console.log("updateDirectory(): ", directoryPath)
 	let listing = await getDirectory(directoryPath)
 	directory = [...listing]
-	// console.dir(directory)
+	console.dir(directory)
 
 	for (let i = 0; i < directory.length; i++) {
 		let entry = directory[i]
-		// console.log("type: ", entry["type"]);
-		// console.log("name: ", entry["name"]);
-		// console.log("size: ", Number(entry["size"]));
-		// console.log("modified: ", Number(entry["modified"]));
-		// console.log("mode: ", entry["mode"]);
-		// console.log("sys: ", Number(entry["sys"]));
+		console.log("name: ", entry.name);
+		console.log("size: ", entry.stats.size);
+		console.log("isFile: ", entry.isFile);
+		console.log("isDir: ", entry.isDir);
+		console.log("modified: ", entry.stats.mtimeMs);
+		console.log("mode: ", entry.stats.mode);
 	}
 }
 
@@ -99,7 +99,7 @@ async function appendToPath(itemName) {
         {#each directory as item, index}
             {#if item}
                 <span>
-                    {#if item.type === "directory"}
+                    {#if item.isDir}
                         <a href="#{item.name}" on:click={appendToPath(item.name)}><i>📁</i> {item.name}</a>
                     {:else}
                         <i>📄</i> {item.name}
