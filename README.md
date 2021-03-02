@@ -193,9 +193,8 @@ Developer documentation for the `wasi-rust` subsystem is generated using `cargo 
 
 ```sh
 yarn docs           # Generates both sets of documentation
-yarn docs:rust:show # Assumes Firefox
+yarn docs:rust:show
 ```
-If not using Firefox, a good entry point for any browser is `src/wasi-rust/target/doc/wasi_gitportal/index.html`.
 ## Notes Requiring Update
 TODO review and update...
 
