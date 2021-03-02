@@ -192,9 +192,8 @@ Developer documentation for the `wasi-rust` subsystem is generated using `cargo 
 
 ```sh
 yarn docs           # Generates both sets of documentation
-yarn docs:rust:show # Assumes Firefox
+yarn docs:rust:show
 ```
-If not using Firefox, a good entry point for any browser is `src/wasi-rust/target/doc/wasi_gitportal/index.html`.
 ## Notes Requiring Update
 TODO review and update...
 
@@ -213,7 +212,7 @@ Note: drag and drop of files is not properly supported yet.
 ## CONTRIBUTING
 Git Portal needs your help! If you think you can help in some way, not just by working on code, please read and follow contributor guidelines in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-This project is released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md) ([The Contributor Covenant](https://www.contributor-covenant.org/) v2.0). By participating in this project you agree to abide by its terms. 
+This project is released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md) ([The Contributor Covenant](https://www.contributor-covenant.org/) v2.0). By participating in this project you agree to abide by its terms.
 ## LICENSE
 
 Everything is GPL3.0 unless otherwise stated. Any contributions are accepted on the condition they conform to this license.
