@@ -1,5 +1,5 @@
 import { Mode, mix } from '@es-git/core';
-import MemoryRepo from '@es-git/memory-repo';
+import ByoFsRepo from '@es-git/byo-fs-repo';
 import objectMixin from '@es-git/object-mixin';
 import saveAsMixin from '@es-git/save-as-mixin';
 import loadAsMixin from '@es-git/load-as-mixin';
@@ -28,19 +28,46 @@ import walkers from '@es-git/walkers-mixin';
  *     .with(saveAsMixin)
  *     .with(loadAsMixin)}
  */
-class Repo extends mix(MemoryRepo)
+
+import { fs as promises } from './api';
+
+// Wrap WasmFs API for ByoFsRepo
+const fs = {
+    writeFile: promises.writeFile,
+    readFile: promises.readFile,
+    readDir: promises.readdir,
+    unlink: promises.unlink,
+    stat: promises.stat,
+    mkdir: promises.mkdir,
+
+    exists: async function (path) {
+      let result = true;
+      const stats = await promises.stat(path).catch((e) => {
+        result = false;
+      });
+
+      return result;
+    },
+}
+
+class Repo extends mix(ByoFsRepo)
     .with(objectMixin)
     .with(saveAsMixin)
     .with(loadAsMixin)
     .with(walkers) {
     constructor (path) {
-        super();
+        super(fs, path);
 
         this.path = path;           // Full path to repository worktree or to gitDir if bare
         this.gitDir = undefined;    // Full path to git files
         this.worktree = undefined;  // Full path to worktree files
         this.initialised = false;   // true if filesystem has been populated
         console.log('new repo: ' + path);
+    }
+
+    async init() {
+        await super.init();
+
     }
 }
 
@@ -96,6 +123,7 @@ function _unregisterRepository(r) {
 export async function newRepository(name){
     console.log('newRepository() name: ' + name);
     const repo = new Repo(name);
+    await repo.init();
 
     // TODO remove test code which adds a couple commits...
 
